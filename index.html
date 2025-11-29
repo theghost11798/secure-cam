@@ -18,6 +18,16 @@
             min-height: 100vh;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            animation: fadeInPage 1s ease-out;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         /* Three.js Canvas */
@@ -562,9 +572,8 @@
             { radius: 28, count: 5, depth: -20, speed: 0.15 }
         ];
 
-        let cameraIndex = 0;
-        layers.forEach((layer, layerIndex) => {
-            for (let i = 0; i < layer.count && cameraIndex < numCameras; i++) {
+        layers.forEach((layer) => {
+            for (let i = 0; i < layer.count; i++) {
                 const cctvCamera = createCCTVCamera();
                 const angle = (i / layer.count) * Math.PI * 2;
                 
@@ -595,7 +604,6 @@
                 });
                 
                 scene.add(cctvCamera);
-                cameraIndex++;
             }
         });
 
@@ -699,7 +707,9 @@
                 cam.mesh.rotation.z += cam.rotationSpeed.z;
                 
                 // Scanning motion (simulate camera scanning)
-                cam.mesh.children[0].rotation.x = Math.sin(time + cam.scanOffset) * 0.2;
+                if (cam.mesh.children[0]) {
+                    cam.mesh.children[0].rotation.x = Math.sin(time + cam.scanOffset) * 0.2;
+                }
             });
 
             // Rotate particle system slowly
@@ -729,6 +739,10 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
+        // Store hours configuration
+        const STORE_OPEN_HOUR = 9;
+        const STORE_CLOSE_HOUR = 20;
+
         // Store status checker
         function updateStoreStatus() {
             const statusElement = document.getElementById('store-status');
@@ -736,7 +750,7 @@
             const hours = now.getHours();
             
             // Store is open from 9 AM to 8 PM (20:00)
-            const isOpen = hours >= 9 && hours < 20;
+            const isOpen = hours >= STORE_OPEN_HOUR && hours < STORE_CLOSE_HOUR;
             
             if (isOpen) {
                 statusElement.className = 'status-indicator open';
@@ -751,14 +765,6 @@
         updateStoreStatus();
         setInterval(updateStoreStatus, 60000);
 
-        // Page load animation
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 1s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
     </script>
 </body>
 </html>
