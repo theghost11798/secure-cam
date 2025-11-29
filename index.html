@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Can - Advanced Security & Surveillance Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         * {
@@ -13,12 +14,13 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4a90d9 100%);
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
             scroll-behavior: smooth;
             animation: fadeInPage 1s ease-out;
+            color: #1a1a2e;
         }
 
         @keyframes fadeInPage {
@@ -38,6 +40,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            background: linear-gradient(180deg, #f8faff 0%, #e8f0ff 50%, #f0f4ff 100%);
         }
 
         /* Main Content */
@@ -47,13 +50,24 @@
             padding: 20px;
         }
 
-        /* Glass-morphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+        /* Professional 3D Card Effect */
+        .card-3d {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 
+                0 10px 40px rgba(30, 60, 114, 0.12),
+                0 4px 12px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(30, 60, 114, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-3d:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 25px 60px rgba(30, 60, 114, 0.2),
+                0 10px 30px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
         /* Hero Section */
@@ -68,193 +82,282 @@
         }
 
         .hero-container {
-            padding: 60px 80px;
-            max-width: 800px;
+            padding: 70px 90px;
+            max-width: 850px;
             animation: fadeIn 1.5s ease-out;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .logo {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
             color: #ffffff;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(100, 180, 255, 0.3);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
-            letter-spacing: 8px;
+            letter-spacing: 10px;
+            position: relative;
         }
 
         .tagline {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 45px;
+            font-weight: 400;
+            letter-spacing: 3px;
         }
 
         .cta-button {
             background: #ffffff;
             color: #1e3c72;
-            padding: 18px 50px;
+            padding: 20px 55px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            letter-spacing: 3px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(30, 60, 114, 0.1), transparent);
+            transition: left 0.5s ease;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.3);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         /* Contact Section */
         .contact-section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            color: #ffffff;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            color: #1e3c72;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3c72, #4a90d9);
+            margin: 20px auto 0;
+            border-radius: 2px;
         }
 
         .contact-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
         }
 
         .contact-card {
-            padding: 40px 30px;
+            padding: 50px 35px;
             text-align: center;
-            transition: all 0.3s ease;
             animation: fadeIn 1s ease-out;
         }
 
-        .contact-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(100, 180, 255, 0.2);
-        }
-
         .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(135deg, #e8f0ff 0%, #d4e4ff 100%);
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.15);
         }
 
         .card-title {
-            color: #ffffff;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+            color: #1e3c72;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 18px;
         }
 
         .card-text {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            line-height: 1.6;
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .card-text a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .card-text a:hover {
+            color: #4a90d9;
         }
 
         .status-indicator {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            padding: 8px 16px;
-            border-radius: 20px;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 12px 24px;
+            border-radius: 30px;
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .status-indicator.open {
-            background: rgba(76, 175, 80, 0.3);
-            color: #81c784;
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
         }
 
         .status-indicator.closed {
-            background: rgba(244, 67, 54, 0.3);
-            color: #ef5350;
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             animation: pulse 1.5s infinite;
         }
 
         .status-indicator.open .status-dot {
-            background: #4caf50;
+            background: #28a745;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
         }
 
         .status-indicator.closed .status-dot {
-            background: #f44336;
+            background: #dc3545;
+            box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
         }
 
         /* Products Section */
         .products-section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 1400px;
             margin: 0 auto;
+            background: linear-gradient(180deg, transparent 0%, #f8faff 50%, transparent 100%);
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
         }
 
         .product-card {
-            padding: 40px 30px;
+            padding: 50px 35px;
             text-align: center;
-            transition: all 0.3s ease;
             animation: fadeIn 1s ease-out;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .product-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 40px rgba(100, 180, 255, 0.3);
-            background: rgba(255, 255, 255, 0.15);
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1e3c72, #4a90d9);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
         }
 
         .product-icon {
             font-size: 4rem;
-            margin-bottom: 25px;
-            display: block;
+            margin-bottom: 30px;
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(30, 60, 114, 0.25);
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .product-title {
-            color: #ffffff;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+            color: #1e3c72;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 18px;
         }
 
         .product-description {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: #5a6778;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            font-weight: 400;
         }
 
         /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -268,16 +371,16 @@
                 transform: scale(1);
             }
             50% {
-                opacity: 0.5;
-                transform: scale(1.2);
+                opacity: 0.6;
+                transform: scale(1.3);
             }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .logo {
-                font-size: 2.5rem;
-                letter-spacing: 4px;
+                font-size: 2.8rem;
+                letter-spacing: 5px;
             }
 
             .tagline {
@@ -285,22 +388,23 @@
             }
 
             .hero-container {
-                padding: 40px 30px;
+                padding: 50px 35px;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .cta-button {
-                padding: 15px 35px;
+                padding: 16px 40px;
                 font-size: 1rem;
             }
         }
 
         @media (max-width: 480px) {
             .logo {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                letter-spacing: 4px;
             }
 
             .tagline {
@@ -309,6 +413,10 @@
 
             .contact-cards, .products-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
             }
         }
 
@@ -324,11 +432,12 @@
 
         .scroll-indicator span {
             display: block;
-            width: 30px;
-            height: 30px;
-            border-right: 3px solid rgba(255, 255, 255, 0.6);
-            border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+            width: 35px;
+            height: 35px;
+            border-right: 3px solid #1e3c72;
+            border-bottom: 3px solid #1e3c72;
             transform: rotate(45deg);
+            opacity: 0.7;
         }
 
         @keyframes bounce {
@@ -336,23 +445,101 @@
                 transform: translateX(-50%) translateY(0);
             }
             40% {
-                transform: translateX(-50%) translateY(10px);
+                transform: translateX(-50%) translateY(12px);
             }
             60% {
-                transform: translateX(-50%) translateY(5px);
+                transform: translateX(-50%) translateY(6px);
+            }
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1e3c72;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4a90d9;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4a90d9;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">SECURE CAN</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#products">Products</a></li>
+        </ul>
+    </nav>
+
     <!-- Three.js Scene Container -->
     <div id="scene-container"></div>
 
     <!-- Main Content -->
     <div class="content">
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-container glass">
+        <section id="hero" class="hero">
+            <div class="hero-container card-3d">
                 <h1 class="logo">SECURE CAN</h1>
                 <p class="tagline">Advanced Security & Surveillance Solutions</p>
                 <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Get Started</button>
@@ -366,17 +553,17 @@
         <section id="contact" class="contact-section">
             <h2 class="section-title">Contact Us</h2>
             <div class="contact-cards">
-                <div class="contact-card glass">
+                <div class="contact-card card-3d">
                     <div class="card-icon">📍</div>
                     <h3 class="card-title">Our Location</h3>
                     <p class="card-text">K.T.S, Sector 4, Harīpur, 22620<br>Khyber Pakhtunkhwa, Pakistan</p>
                 </div>
-                <div class="contact-card glass">
+                <div class="contact-card card-3d">
                     <div class="card-icon">📞</div>
                     <h3 class="card-title">Contact Number</h3>
-                    <p class="card-text">Phone: <a href="tel:+923435064213" style="color: #fff; text-decoration: none;">0343 5064213</a></p>
+                    <p class="card-text">Phone: <a href="tel:+923435064213">0343 5064213</a></p>
                 </div>
-                <div class="contact-card glass">
+                <div class="contact-card card-3d">
                     <div class="card-icon">🕐</div>
                     <h3 class="card-title">Business Hours</h3>
                     <p class="card-text">Open Daily<br>Closes at 8:00 PM</p>
@@ -392,32 +579,32 @@
         <section id="products" class="products-section">
             <h2 class="section-title">Products & Services</h2>
             <div class="products-grid">
-                <div class="product-card glass">
+                <div class="product-card card-3d">
                     <span class="product-icon">📹</span>
                     <h3 class="product-title">CCTV Cameras</h3>
                     <p class="product-description">High-definition surveillance cameras with night vision, motion detection, and remote viewing capabilities for comprehensive security coverage.</p>
                 </div>
-                <div class="product-card glass">
+                <div class="product-card card-3d">
                     <span class="product-icon">🖥️</span>
                     <h3 class="product-title">DVR/NVR Systems</h3>
                     <p class="product-description">Advanced digital and network video recording systems with large storage capacity and easy playback features for 24/7 monitoring.</p>
                 </div>
-                <div class="product-card glass">
+                <div class="product-card card-3d">
                     <span class="product-icon">🔐</span>
                     <h3 class="product-title">Access Control</h3>
                     <p class="product-description">Smart access control solutions including biometric systems, card readers, and keypad entry for secure premises management.</p>
                 </div>
-                <div class="product-card glass">
+                <div class="product-card card-3d">
                     <span class="product-icon">🚨</span>
                     <h3 class="product-title">Alarm Systems</h3>
                     <p class="product-description">State-of-the-art alarm systems with intrusion detection, emergency alerts, and smartphone notifications for instant security response.</p>
                 </div>
-                <div class="product-card glass">
+                <div class="product-card card-3d">
                     <span class="product-icon">🔧</span>
                     <h3 class="product-title">Installation</h3>
                     <p class="product-description">Professional installation services by certified technicians ensuring optimal camera placement and system configuration.</p>
                 </div>
-                <div class="product-card glass">
+                <div class="product-card card-3d">
                     <span class="product-icon">⚙️</span>
                     <h3 class="product-title">Maintenance</h3>
                     <p class="product-description">Regular maintenance and support services to keep your security systems running at peak performance year-round.</p>
@@ -618,18 +805,23 @@
             particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 100;
             particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 100;
 
-            // White and blue colors
-            if (Math.random() > 0.5) {
-                // White
-                particleColors[i * 3] = 1;
-                particleColors[i * 3 + 1] = 1;
-                particleColors[i * 3 + 2] = 1;
+            // Blue and navy colors for white background
+            const colorChoice = Math.random();
+            if (colorChoice > 0.6) {
+                // Deep blue
+                particleColors[i * 3] = 0.12;
+                particleColors[i * 3 + 1] = 0.24;
+                particleColors[i * 3 + 2] = 0.45;
+            } else if (colorChoice > 0.3) {
+                // Light blue
+                particleColors[i * 3] = 0.29;
+                particleColors[i * 3 + 1] = 0.56;
+                particleColors[i * 3 + 2] = 0.85;
             } else {
-                // Various shades of blue
-                const blueShade = 0.5 + Math.random() * 0.5;
-                particleColors[i * 3] = 0.2 * blueShade;
-                particleColors[i * 3 + 1] = 0.5 * blueShade;
-                particleColors[i * 3 + 2] = 1;
+                // Cyan accent
+                particleColors[i * 3] = 0.0;
+                particleColors[i * 3 + 1] = 0.67;
+                particleColors[i * 3 + 2] = 1.0;
             }
         }
 
@@ -637,24 +829,29 @@
         particleGeometry.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
 
         const particleMaterial = new THREE.PointsMaterial({
-            size: 0.15,
+            size: 0.2,
             vertexColors: true,
             transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
+            opacity: 0.7,
+            blending: THREE.NormalBlending
         });
 
         const particles = new THREE.Points(particleGeometry, particleMaterial);
         scene.add(particles);
 
-        // Dynamic lighting
-        const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
+        // Dynamic lighting - enhanced for white background
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
         directionalLight.position.set(10, 20, 10);
         directionalLight.castShadow = true;
         scene.add(directionalLight);
+
+        // Additional fill light
+        const fillLight = new THREE.DirectionalLight(0x4488ff, 0.4);
+        fillLight.position.set(-10, -10, 10);
+        scene.add(fillLight);
 
         // Blue point lights that pulse and move
         const pointLights = [];
@@ -666,8 +863,8 @@
         ];
 
         lightPositions.forEach((pos, index) => {
-            const color = index % 2 === 0 ? 0x4488ff : 0xffffff;
-            const light = new THREE.PointLight(color, 1, 50);
+            const color = index % 2 === 0 ? 0x4488ff : 0x1e3c72;
+            const light = new THREE.PointLight(color, 1.2, 50);
             light.position.set(pos.x, pos.y, pos.z);
             light.castShadow = true;
             pointLights.push({
